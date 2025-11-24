@@ -1,4 +1,14 @@
+document.documentElement.classList.add('loading');
+document.body.classList.add('loading');
+
 document.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+            document.documentElement.classList.remove('loading');
+        }, 100);
+    });
+    
     initMobileNav();
     initStickyHeader();
     initScrollReveal();
@@ -524,10 +534,6 @@ window.addEventListener('error', (e) => {
 console.log('%cAl-Ryan Enterprises', 'font-size: 20px; font-weight: bold; color: #2563eb;');
 console.log('%cWebsite built with modern web standards', 'font-size: 12px; color: #64748b;');
 
-window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-};
-
 if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
+    history.scrollRestoration = 'auto';
 }
