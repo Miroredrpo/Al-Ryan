@@ -175,17 +175,6 @@ function initContactForm() {
             }
         }
         
-        const fileInput = form.querySelector('input[type="file"]');
-        if (fileInput && fileInput.files.length > 0) {
-            const file = fileInput.files[0];
-            const maxSize = 5 * 1024 * 1024;
-            
-            if (file.size > maxSize) {
-                isValid = false;
-                showMessage('File size must be less than 5MB.', 'error');
-            }
-        }
-        
         return isValid;
     }
     
@@ -199,7 +188,7 @@ function initContactForm() {
         if (type === 'success') {
             setTimeout(() => {
                 formMessage.style.display = 'none';
-            }, X);
+            }, 5000);
         }
     }
 }
@@ -534,6 +523,8 @@ window.addEventListener('error', (e) => {
 console.log('%cAl-Ryan Enterprises', 'font-size: 20px; font-weight: bold; color: #2563eb;');
 console.log('%cWebsite built with modern web standards', 'font-size: 12px; color: #64748b;');
 
-if (history.scrollRestoration) {
-    history.scrollRestoration = 'auto';
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
 }
+
+window.scrollTo(0, 0);
